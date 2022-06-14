@@ -3,7 +3,7 @@
 
 module Main where
 
-import Hakyll.Main (hakyll)
+import Hakyll.Main (hakyllWith)
 
 import Hakyll.Core.Rules (match, route, compile, create)
 import Hakyll.Core.Routes (idRoute, setExtension)
@@ -18,10 +18,16 @@ import Hakyll.Web.Html.RelativizeUrls (relativizeUrls)
 import Hakyll.Web.CompressCss (compressCssCompiler)
 import Hakyll.Web.Pandoc (pandocCompiler)
 
+import Hakyll.Core.Configuration
+    (Configuration(destinationDirectory), defaultConfiguration)
+
 import Hakyll.Images (loadImage)
 
+config :: Configuration
+config = defaultConfiguration { destinationDirectory = "docs"}
+
 main :: IO ()
-main = hakyll do
+main = hakyllWith config do
     match "index.html" do 
         route idRoute
         compile $
