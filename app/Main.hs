@@ -55,6 +55,7 @@ main = hakyllWith config do
         compile $
             pandocCompiler
                 >>= loadAndApplyTemplate "templates/default.html" (constField "title" "Contact me" <> defaultContext)
+                >>= relativizeUrls
 
     match "posts/*.md" do
         route $ setExtension "html"
