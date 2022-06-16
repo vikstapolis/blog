@@ -1,0 +1,39 @@
+name: Build and deploy to GitHub Pages
+on: push
+
+jobs:
+  build-deploy:
+    name: Build and deploy
+    runs-on: ubuntu-latest
+    env:
+      GHC_VERSION: '8.10.7'
+      CABAL_VERSION: '3.6'
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: haskell/actions/setup@v2
+        with:
+          ghc-version: ${{ env.GHC_VERSION }}
+          cabal-version: ${{ env.CABAL_VERSION }}
+
+      - name: Cache ~/.cabal/packages, ~/.cabal/store and dist-newstyle
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.cabal/packages
+            ~/.cabal/store
+            dist-newstyle
+          key: ${{ runner.os }}-${{ env.GHC_VERSION }}-${{ hashFiles('**/*.cabal', '**/cabal.project.freeze') }}
+          restore-keys: ${{ runner.os }}-${{ env.GHC_VERSION }}-
+
+        - run: cabal update
+        - run: cabal build --only-dependencies
+        - run: cabal build
+
+        - name: Deploy using peaceiris/actions-ghc-pages@v3
+          uses: peaceiris/actions-gh-pages@v3
+          with:
+            github_token: ${{ secrets.GITHUB_TOKEN }}
+            publish_dir: docs
+            publish_branch: main
