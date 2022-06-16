@@ -1,5 +1,5 @@
 name: Build and deploy to GitHub Pages
-on: push
+on: [push]
 
 jobs:
   build-deploy:
@@ -37,3 +37,4 @@ jobs:
             github_token: ${{ secrets.GITHUB_TOKEN }}
             publish_dir: docs
             publish_branch: main
+          if: github.ref == 'refs/heads/develop'
