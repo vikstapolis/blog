@@ -20,13 +20,14 @@ config = defaultConfiguration
 
 main :: IO ()
 main = hakyllWith config do
-    match "index.html" do
-        route idRoute
+    match "index.md" do
+        route $ setExtension "html"
         compile $
             let ctx = constField "title" "Home" <> defaultContext
-            in getResourceBody
+            in pandocCompiler
                 >>= loadAndApplyTemplate "templates/default.html" ctx
                 >>= relativizeUrls
+
 
     create ["posts.html"] do
         route idRoute
@@ -59,8 +60,9 @@ main = hakyllWith config do
     match "contact.md" do
         route $ setExtension "html"
         compile $
-            pandocCompiler
-                >>= loadAndApplyTemplate "templates/default.html" (constField "title" "Contact me" <> defaultContext)
+            let ctx = constField "title" "Contact me" <> defaultContext
+            in pandocCompiler
+                >>= loadAndApplyTemplate "templates/default.html" ctx
                 >>= relativizeUrls
 
     match "posts/*.md" do
