@@ -1,37 +1,16 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE BlockArguments #-}
-{-# LANGUAGE ScopedTypeVariables #-}
 {-# LANGUAGE TypeApplications #-}
 
 module Main where
 
-import Hakyll.Main (hakyllWith)
-
-import Hakyll.Core.Rules (match, route, compile, create, version)
-import Hakyll.Core.Routes (idRoute, setExtension, customRoute)
-import Hakyll.Core.Compiler (makeItem, getResourceBody, loadAll, getResourceFilePath)
-
-import Hakyll.Web.Template (loadAndApplyTemplate, templateBodyCompiler)
-import Hakyll.Web.Template.Context (defaultContext, listField, constField, urlField, Context, field, boolField)
-import Hakyll.Web.Template.List (recentFirst)
-
-import Hakyll.Web.Html.RelativizeUrls (relativizeUrls)
-
-import Hakyll.Web.CompressCss (compressCssCompiler)
-import Hakyll.Web.Pandoc (pandocCompiler)
-
-import Hakyll.Core.Configuration
-    (Configuration(destinationDirectory), defaultConfiguration, providerDirectory)
-
-import Hakyll.Core.Item (Item (itemIdentifier), itemBody)
+import Hakyll
 
 import Hakyll.Images (loadImage, Image)
 
 import Data.String (fromString)
-import Hakyll.Core.Identifier.Pattern (hasNoVersion, (.&&.), hasVersion)
-import Debug.Trace (trace)
 import System.FilePath
-import Hakyll.Core.Identifier (toFilePath)
+    (takeFileName, dropExtension, replaceExtension)
 
 config :: Configuration
 config = defaultConfiguration 
