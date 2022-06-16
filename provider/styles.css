@@ -69,22 +69,42 @@ p {
 
 @font-face {
     font-family: "Papyrus";
-    src: url("fonts/Papyrus-Regular.woff2");
+    src: url("fonts/Papyrus-Regular.eot");
+    src: url("fonts/Papyrus-Regular.eot?#iefix") format("embedded-onetype"),
+         url("fonts/Papyrus-Regular.woff2") format("woff2"),
+         url("fonts/Papyrus-Regular.woff") format("woff"),
+         url("fonts/Papyrus-Regular.ttf") format("truetype"),
+         url("fonts/Papyrus-Regular.svg#papyrus") format("svg");
 }
 
 @font-face {
     font-family: "Garamond";
-    src: url("fonts/Garamond.woff2");
+    src: url("fonts/Garamond.eot");
+    src: url("fonts/Garamond.eot?#iefix") format("embedded-onetype"),
+         url("fonts/Garamond.woff2") format("woff2"),
+         url("fonts/Garamond.woff") format("woff"),
+         url("fonts/Garamond.ttf") format("truetype"),
+         url("fonts/Garamond.svg#garamond") format("svg");
 }
 
 @font-face {
     font-family: "Garamond";
-    src: url("fonts/Garamond-Bold.woff2");
+    src: url("fonts/Garamond-Bold.eot");
+    src: url("fonts/Garamond-Bold.eot?#iefix") format("embedded-onetype"),
+         url("fonts/Garamond-Bold.woff2") format("woff2"),
+         url("fonts/Garamond-Bold.woff") format("woff"),
+         url("fonts/Garamond-Bold.ttf") format("truetype"),
+         url("fonts/Garamond-Bold.svg#garamond") format("svg");
     font-weight: bold;
 }
 
 @font-face {
     font-family: "Garamond";
-    src: url("fonts/Garamond-Italic.woff2");
+    src: url("fonts/Garamond-Italic.eot");
+    src: url("fonts/Garamond-Italic.eot?#iefix") format("embedded-onetype"),
+         url("fonts/Garamond-Italic.woff2") format("woff2"),
+         url("fonts/Garamond-Italic.woff") format("woff"),
+         url("fonts/Garamond-Italic.ttf") format("truetype"),
+         url("fonts/Garamond-Italic.svg#garamond") format("svg");
     font-style: italic;
 }

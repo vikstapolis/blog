@@ -104,7 +104,11 @@ main = hakyllWith config do
 
     match "styles.css" do
         route idRoute
-        compile compressCssCompiler
+        compile $ compressCssCompiler >>= relativizeUrls
 
     match "templates/*" $
         compile templateBodyCompiler
+
+    match "fonts/*" do
+        route idRoute
+        compile copyFileCompiler
