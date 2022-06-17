@@ -24,7 +24,7 @@ man-made constructs.
 <span class="img-caption">A triumphant bee eater with an insect in its beak</span>
 :::
 
-Over the past few years, my interest has turned into a passion for birdwatching and nature photography (although animals
+Over the past few years, I have developed a passion for birdwatching and nature photography (although animals
 of any kind are enough to pique my interest). This blog aims to capture some of my
 experiences &mdash; and hopefully inspire you to better
 appreciate the fascinating fauna all around us.
